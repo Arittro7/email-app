@@ -1,13 +1,12 @@
 import { create } from 'zustand';
 import type { Mail, MailID } from '../../types/Mail';
 
-
 // fake data
 const fakeEmails: Mail[] = [
-  { id: '1', title: 'Hello', body: 'Hi there', isRead: false, isArchived: false },
-  { id: '2', title: 'Newsletter', body: 'Monthly news', isRead: true, isArchived: false },
+  { id: '1', title: 'Your 7-figure plan goes bye-bye at midnight', body: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', isRead: false, isArchived: false },
+  { id: '2', title: '[WEEKEND ONLY] Get this NOW before', body: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', isRead: false, isArchived: false },
+  { id: '3', title: 'Uh-oh, your prescription is expiring', body: 'Your prescription needs renewal. Please contact us.', isRead: false, isArchived: false },
 ];
-
 
 interface MailState {
   emails: Mail[];
@@ -25,7 +24,7 @@ interface MailState {
 export const useMailStore = create<MailState>((set, get) => ({
   emails: fakeEmails,
   selection: new Set(),
-  currentId: fakeEmails[0]?.id ?? null,
+  currentId: null,
 
   setCurrent: (id) => set({ currentId: id }),
 

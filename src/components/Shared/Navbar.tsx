@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Link, useRouterState } from '@tanstack/react-router';
 
 const Navbar: React.FC = () => {
@@ -6,7 +6,6 @@ const Navbar: React.FC = () => {
 
   return (
     <aside className="flex flex-col h-full w-48 border-r border-slate-200 bg-gray-700 p-4">
-     
       <nav className="flex flex-col gap-2 flex-1">
         <Link
           to="/"
@@ -29,7 +28,7 @@ const Navbar: React.FC = () => {
           Archive
         </Link>
       </nav>
-
+      
       <button className="mt-auto border border-slate-200 rounded-md px-3 py-2 text-sm text-white hover:bg-black">
         Logout
       </button>

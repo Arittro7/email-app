@@ -14,9 +14,9 @@ const MailItem: React.FC<Props> = ({ mail }) => {
 
   return (
     <div
-      className={`flex items-center gap-3 border rounded-md px-3 py-2 transition ${
+      className={`flex items-center gap-3 border rounded-md px-3 py-2 transition cursor-pointer ${
         selected ? 'bg-indigo-50 border-indigo-200' : 'border-slate-200'
-      }`}
+      } ${mail.isRead ? 'opacity-60' : ''}`}
     >
       <input
         type="checkbox"
