@@ -24,22 +24,47 @@ const DetailView: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, [current, setCurrent, markRead, archive]);
 
-  if (!current) return null;
+  if (!current) {
+    return (
+      <div className="h-full flex items-center justify-center text-slate-400">
+        Select an email to view
+      </div>
+    );
+  }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-      <div className="bg-white rounded-md p-6 w-[600px] shadow-lg">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-bold">{current.title}</h2>
-          <button onClick={() => setCurrent(null)}>Close (Esc)</button>
-        </div>
-        <p className="text-slate-600 leading-relaxed">{current.body}</p>
-        <div className="mt-4 flex gap-2">
-          <button onClick={() => markRead([current.id])}>Mark as read (r)</button>
-          <button onClick={() => { archive([current.id]); setCurrent(null); }}>
+    <div className="absolute inset-0 bg-white flex flex-col">
+      {/* Header with actions */}
+      <div className="flex justify-between items-center border-b p-4">
+        <h2 className="text-lg font-bold">{current.title}</h2>
+        <div className="flex gap-2">
+          <button
+            onClick={() => setCurrent(null)}
+            className="px-3 py-1 text-sm border rounded hover:bg-slate-100"
+          >
+            Close (Esc)
+          </button>
+          <button
+            onClick={() => markRead([current.id])}
+            className="px-3 py-1 text-sm border rounded hover:bg-slate-100"
+          >
+            Mark as read (r)
+          </button>
+          <button
+            onClick={() => {
+              archive([current.id]);
+              setCurrent(null);
+            }}
+            className="px-3 py-1 text-sm border rounded hover:bg-slate-100"
+          >
             Archive (a)
           </button>
         </div>
+      </div>
+
+      {/* Body */}
+      <div className="p-6 overflow-y-auto">
+        <p className="text-slate-600 leading-relaxed">{current.body}</p>
       </div>
     </div>
   );

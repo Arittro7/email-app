@@ -6,7 +6,7 @@ type Props = { children: React.ReactNode };
 
 const RootLayout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="grid grid-cols-[200px_400px_1fr] h-screen">
+    <div className="grid grid-cols-[200px_400px_1fr] h-screen relative">
   {/* Sidebar */}
   <Navbar />
 
@@ -16,7 +16,7 @@ const RootLayout: React.FC<Props> = ({ children }) => {
   </div>
 
   {/* Detail view */}
-  <div>
+  <div className='relative'>
     <DetailView />
   </div>
 </div>
